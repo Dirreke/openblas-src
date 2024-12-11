@@ -114,11 +114,15 @@ fn main() {
         println!("cargo:rustc-link-lib={}=openblas", link_kind);
     } else {
         if cfg!(target_env = "msvc") {
-            panic!(
-                "Non-vcpkg builds are not supported on Windows. You must use the 'system' feature."
-            )
+            // panic!(
+            //     "Non-vcpkg builds are not supported on Windows. You must use the 'system' feature."
+            // )
+            let test = openblas_build::download::download_openblas_windows(env::var("OUT_DIR").unwrap()).unwrap();
+            println!("cargo:rustc-link-search={}", test.join("bin").display());
+            println!("cargo:rustc-link-search={}", test.join("lib").display());
+        } else {
+            build();
         }
-        build();
     }
     println!("cargo:rustc-link-lib={}=openblas", link_kind);
 }

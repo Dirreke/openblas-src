@@ -23,6 +23,7 @@ ureq = { version = "2.5.0", default-features = false, features = [
     "gzip",
 ] }
 native-tls = { version = "0.2.11" }
+zip = { version = "2.2", default-features = false, features = ["deflate"] }
 
 [dev-dependencies]
 walkdir = "2.0"

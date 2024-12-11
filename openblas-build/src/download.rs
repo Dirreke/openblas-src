@@ -10,6 +10,19 @@ pub fn openblas_source_url() -> String {
     )
 }
 
+fn openblas_lib_url() -> String {
+    let pointer_width = std::env::var("TARGET").unwrap_or_default();
+    let arch = if pointer_width == "32" {
+        "x86"
+    } else {
+        "x64"
+    };
+    format!(
+        "https://github.com/OpenMathLib/OpenBLAS/releases/download/v{}/OpenBLAS-{}-{}.zip",
+        OPENBLAS_VERSION, OPENBLAS_VERSION, arch
+    )
+}
+
 pub fn download(out_dir: &Path) -> Result<PathBuf> {
     let dest = out_dir.join(format!("OpenBLAS-{}", OPENBLAS_VERSION));
     if !dest.exists() {
@@ -32,4 +45,28 @@ fn get_agent() -> ureq::Agent {
         ))
         .try_proxy_from_env(true)
         .build()
+}
+
+pub fn download_openblas_windows<P: AsRef<Path>>(path: P) -> Result<PathBuf> {
+    let dest = path.as_ref().join(format!("OpenBLAS-{}", OPENBLAS_VERSION));
+    let url = openblas_lib_url();
+    let buf = get_agent()
+        .get(&url)
+        .call()?
+        .into_reader();
+    let zip_file = zip::unstable::stream::ZipStreamReader::new(buf);
+    zip_file.extract(dest)?;
+    Ok(dest.to_path_buf())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    
+    #[test]
+    fn test() {
+        let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+        let out_dir = root.join("test_build/download");
+        download_openblas_windows(out_dir).unwrap();
+    }
 }
