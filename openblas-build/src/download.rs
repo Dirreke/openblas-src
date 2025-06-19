@@ -9,7 +9,7 @@ const OPENBLAS_VERSION: &str = "0.3.30";
 
 pub fn openblas_source_url() -> String {
     format!(
-        "https://github.com/OpenMathLib/OpenBLAS/releases/download/v{}/OpenBLAS-{}.tar.gz",
+        "https://ghfast.top/https://github.com/OpenMathLib/OpenBLAS/releases/download/v{}/OpenBLAS-{}.tar.gz",
         OPENBLAS_VERSION, OPENBLAS_VERSION
     )
 }
