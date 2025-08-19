@@ -180,7 +180,10 @@ fn build() {
     } else {
         PathBuf::from(env::var("OUT_DIR").unwrap())
     };
-    let source = openblas_build::download(&output).unwrap();
+    let source = openblas_build::download(&output);
+    if let Err(e) = source {
+        panic!("Failed to download OpenBLAS source: {}", e);
+    }
 
     // If OpenBLAS is build as shared, user of openblas-src will have to find `libopenblas.so` at runtime.
     //
