@@ -184,6 +184,7 @@ fn build() {
     if let Err(e) = source {
         panic!("Failed to download OpenBLAS source: {}", e);
     }
+    let source = source.unwrap();
 
     // If OpenBLAS is build as shared, user of openblas-src will have to find `libopenblas.so` at runtime.
     //
