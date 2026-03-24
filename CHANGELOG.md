@@ -1,7 +1,12 @@
 # CHANGELOG
 
-[Unreleased](https://github.com/blas-lapack-rs/openblas-src/compare/openblas-src-v0.10.14...master)
+[Unreleased](https://github.com/blas-lapack-rs/openblas-src/compare/openblas-src-v0.10.15...master)
 -----------
+[0.10.15 - 2026-03-24](https://github.com/blas-lapack-rs/openblas-src/compare/openblas-src-v0.10.14...v0.10.15)
+-----------
+
+## What's Changed
+* Update OpenBLAS version to 0.3.32 by @Dirreke in https://github.com/blas-lapack-rs/openblas-src/pull/150
 
 [0.10.14 - 2026-01-28](https://github.com/blas-lapack-rs/openblas-src/compare/openblas-src-v0.10.13...v0.10.14)
 -----------
