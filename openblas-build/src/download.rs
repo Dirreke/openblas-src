@@ -5,7 +5,7 @@ use ureq::{
     tls::{TlsConfig, TlsProvider},
 };
 
-const OPENBLAS_VERSION: &str = "0.3.31";
+const OPENBLAS_VERSION: &str = "0.3.32";
 
 pub fn openblas_source_url() -> String {
     format!(

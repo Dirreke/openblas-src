@@ -158,6 +158,9 @@ pub enum Target {
     // CSKY
     CSKY,
     CK860FV,
+
+    // WebAssembly/Emscripten:
+    WASM128_GENERIC,
 }
 
 impl FromStr for Target {
@@ -308,6 +311,9 @@ impl FromStr for Target {
             // CSKY
             "csky" => Self::CSKY,
             "ck860fv" => Self::CK860FV,
+
+            // WebAssembly/Emscripten
+            "wasm128_generic" => Self::WASM128_GENERIC,
 
             _ => {
                 return Err(Error::UnsupportedTarget {
