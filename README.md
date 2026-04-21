@@ -99,6 +99,9 @@ the variables that are renamed:
 | FC                | OPENBLAS_FC           |
 | HOSTCC            | OPENBLAS_HOSTCC       |
 | RANLIB            | OPENBLAS_RANLIB       |
+| DYNAMIC_ARCH      | OPENBLAS_DYNAMIC_ARCH |
+| USE_THREAD        | OPENBLAS_USE_THREAD   |
+| USE_OPENMP        | OPENBLAS_USE_OPENMP   |
 
 ### Variables emitted by build.rs
 

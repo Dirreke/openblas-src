@@ -142,6 +142,9 @@ fn build() {
     println!("cargo:rerun-if-env-changed=OPENBLAS_HOSTCC");
     println!("cargo:rerun-if-env-changed=OPENBLAS_FC");
     println!("cargo:rerun-if-env-changed=OPENBLAS_RANLIB");
+    println!("cargo:rerun-if-env-changed=OPENBLAS_DYNAMIC_ARCH");
+    println!("cargo:rerun-if-env-changed=OPENBLAS_USE_THREAD");
+    println!("cargo:rerun-if-env-changed=OPENBLAS_USE_OPENMP");
     let mut cfg = openblas_build::Configure::default();
     if !feature_enabled("cblas") {
         cfg.no_cblas = true;
@@ -167,6 +170,9 @@ fn build() {
     cfg.compilers.hostcc = env::var("OPENBLAS_HOSTCC").ok();
     cfg.compilers.fc = env::var("OPENBLAS_FC").ok();
     cfg.compilers.ranlib = env::var("OPENBLAS_RANLIB").ok();
+    cfg.dynamic_arch = env::var("OPENBLAS_DYNAMIC_ARCH").is_ok();
+    cfg.use_thread = env::var("OPENBLAS_USE_THREAD").is_ok();
+    cfg.use_openmp = env::var("OPENBLAS_USE_OPENMP").is_ok();
 
     let output = if feature_enabled("cache") {
         use std::{
