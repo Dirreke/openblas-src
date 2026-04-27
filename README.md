@@ -102,6 +102,9 @@ the variables that are renamed:
 | DYNAMIC_ARCH      | OPENBLAS_DYNAMIC_ARCH |
 | USE_THREAD        | OPENBLAS_USE_THREAD   |
 | USE_OPENMP        | OPENBLAS_USE_OPENMP   |
+| USE_LOCKING       | OPENBLAS_USE_LOCKING  |
+| NUM_THREADS       | OPENBLAS_NUM_THREADS  |
+| NUM_PARALLEL      | OPENBLAS_NUM_PARALLEL |
 
 ### Variables emitted by build.rs
 
