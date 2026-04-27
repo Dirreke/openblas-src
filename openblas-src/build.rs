@@ -145,6 +145,9 @@ fn build() {
     println!("cargo:rerun-if-env-changed=OPENBLAS_DYNAMIC_ARCH");
     println!("cargo:rerun-if-env-changed=OPENBLAS_USE_THREAD");
     println!("cargo:rerun-if-env-changed=OPENBLAS_USE_OPENMP");
+    println!("cargo:rerun-if-env-changed=OPENBLAS_USE_LOCKING");
+    println!("cargo:rerun-if-env-changed=OPENBLAS_NUM_THREADS");
+    println!("cargo:rerun-if-env-changed=OPENBLAS_NUM_PARALLEL");
     let mut cfg = openblas_build::Configure::default();
     if !feature_enabled("cblas") {
         cfg.no_cblas = true;
@@ -173,6 +176,15 @@ fn build() {
     cfg.dynamic_arch = env::var("OPENBLAS_DYNAMIC_ARCH").is_ok();
     cfg.use_thread = env::var("OPENBLAS_USE_THREAD").is_ok();
     cfg.use_openmp = env::var("OPENBLAS_USE_OPENMP").is_ok();
+    cfg.use_locking = env::var("OPENBLAS_USE_LOCKING").is_ok();
+    cfg.num_threads = env::var("OPENBLAS_NUM_THREADS").ok().map(|v| {
+        v.parse()
+            .expect("Invalid integer specified by $OPENBLAS_NUM_THREADS")
+    });
+    cfg.num_parallel = env::var("OPENBLAS_NUM_PARALLEL").ok().map(|v| {
+        v.parse()
+            .expect("Invalid integer specified by $OPENBLAS_NUM_PARALLEL")
+    });
 
     let output = if feature_enabled("cache") {
         use std::{
