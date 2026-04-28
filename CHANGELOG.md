@@ -2,6 +2,10 @@
 
 [Unreleased](https://github.com/blas-lapack-rs/openblas-src/compare/openblas-src-v0.10.15...master)
 -----------
+
+## What's Changed
+* Plumb `DYNAMIC_ARCH` through `openblas-build::Configure` (previously dead field) and expose the threading-related build flags `DYNAMIC_ARCH`, `USE_THREAD`, `USE_OPENMP`, `USE_LOCKING`, `NUM_THREADS`, and `NUM_PARALLEL` via the corresponding `OPENBLAS_*` env vars in `openblas-src`. Fixes [#106](https://github.com/blas-lapack-rs/openblas-src/issues/106) and picks up the work abandoned in [#72](https://github.com/blas-lapack-rs/openblas-src/pull/72).
+
 [0.10.15 - 2026-03-24](https://github.com/blas-lapack-rs/openblas-src/compare/openblas-src-v0.10.14...v0.10.15)
 -----------
 

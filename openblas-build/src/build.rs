@@ -365,7 +365,10 @@ pub struct Configure {
     pub no_lapacke: bool,
     pub use_thread: bool,
     pub use_openmp: bool,
+    pub use_locking: bool,
     pub dynamic_arch: bool,
+    pub num_threads: Option<u32>,
+    pub num_parallel: Option<u32>,
     pub interface: Interface,
     pub target: Option<Target>,
     pub compilers: Compilers,
@@ -381,7 +384,10 @@ impl Default for Configure {
             no_lapacke: false,
             use_thread: false,
             use_openmp: false,
+            use_locking: false,
             dynamic_arch: false,
+            num_threads: None,
+            num_parallel: None,
             interface: Interface::LP64,
             target: None,
             compilers: Compilers::default(),
@@ -417,6 +423,18 @@ impl Configure {
         }
         if self.use_openmp {
             args.push("USE_OPENMP=1".into());
+        }
+        if self.use_locking {
+            args.push("USE_LOCKING=1".into());
+        }
+        if self.dynamic_arch {
+            args.push("DYNAMIC_ARCH=1".into());
+        }
+        if let Some(num_threads) = self.num_threads {
+            args.push(format!("NUM_THREADS={}", num_threads));
+        }
+        if let Some(num_parallel) = self.num_parallel {
+            args.push(format!("NUM_PARALLEL={}", num_parallel));
         }
         if matches!(self.interface, Interface::ILP64) {
             args.push("INTERFACE64=1".into());
