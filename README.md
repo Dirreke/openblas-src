@@ -12,7 +12,9 @@ The following Cargo features are supported:
 * `cblas` to build CBLAS (enabled by default),
 * `lapacke` to build LAPACKE (enabled by default),
 * `static` to link to OpenBLAS statically,
-* `system` to skip building the bundled OpenBLAS.
+* `system` to skip building the bundled OpenBLAS,
+* `rustls` to use rustls for downloading the OpenBLAS source (enabled by default),
+* `native-tls` to use platform-native TLS for downloading the OpenBLAS source.
 
 Note: On Windows, OpenBLAS can not be built from source. The `system` feature is 
 supposed to be used.

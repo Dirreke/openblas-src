@@ -5,6 +5,9 @@ use ureq::{
     tls::{TlsConfig, TlsProvider},
 };
 
+#[cfg(not(any(feature = "rustls", feature = "native-tls")))]
+compile_error!("openblas-build requires the `rustls` or `native-tls` feature to be enabled");
+
 const OPENBLAS_VERSION: &str = "0.3.32";
 
 pub fn openblas_source_url() -> String {
@@ -31,12 +34,13 @@ pub fn download(out_dir: &Path) -> Result<PathBuf> {
 }
 
 fn get_agent() -> ureq::Agent {
+    #[cfg(feature = "native-tls")]
+    let provider = TlsProvider::NativeTls;
+    #[cfg(all(feature = "rustls", not(feature = "native-tls")))]
+    let provider = TlsProvider::Rustls;
+
     Config::builder()
-        .tls_config(
-            TlsConfig::builder()
-                .provider(TlsProvider::NativeTls)
-                .build(),
-        )
+        .tls_config(TlsConfig::builder().provider(provider).build())
         .build()
         .new_agent()
 }
