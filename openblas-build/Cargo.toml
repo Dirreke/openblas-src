@@ -12,15 +12,18 @@ readme = "../README.md"
 exclude = ["test_build/"]
 rust-version = "1.71.1"
 
+[features]
+default = ["rustls"]
+rustls = ["ureq/rustls"]
+native-tls = ["ureq/native-tls"]
+
 [dependencies]
 anyhow = "1.0.68"
 cc = "1.0"
 flate2 = "1.0.25"
 tar = "0.4.38"
 thiserror = "2.0"
-ureq = { version = "3.0", default-features = false, features = [
-    "native-tls",
-] }
+ureq = { version = "3.0", default-features = false }
 
 [dev-dependencies]
 walkdir = "2.0"
