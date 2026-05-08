@@ -1,6 +1,6 @@
 [package]
 name = "openblas-src"
-version = "0.10.15"
+version = "0.10.16"
 license = "Apache-2.0/MIT"
 edition = "2018"
 authors = [
@@ -41,7 +41,7 @@ libc = "0.2"
 [build-dependencies]
 pkg-config = "0.3.30"
 dirs = "6.0.0"
-openblas-build = { version = "=0.10.15", path = "../openblas-build", default-features = false }
+openblas-build = { version = "=0.10.16", path = "../openblas-build", default-features = false }
 
 [target.'cfg(target_os="windows")'.build-dependencies]
 vcpkg = "0.2"
