@@ -1,10 +1,21 @@
 # CHANGELOG
 
-[Unreleased](https://github.com/blas-lapack-rs/openblas-src/compare/openblas-src-v0.10.15...master)
+[Unreleased](https://github.com/blas-lapack-rs/openblas-src/compare/openblas-src-v0.10.16...master)
+-----------
+
+
+
+[0.10.16 - 2026-05-08](https://github.com/blas-lapack-rs/openblas-src/compare/openblas-src-v0.10.15...v0.10.16)
 -----------
 
 ## What's Changed
-* Plumb `DYNAMIC_ARCH` through `openblas-build::Configure` (previously dead field) and expose the threading-related build flags `DYNAMIC_ARCH`, `USE_THREAD`, `USE_OPENMP`, `USE_LOCKING`, `NUM_THREADS`, and `NUM_PARALLEL` via the corresponding `OPENBLAS_*` env vars in `openblas-src`. Fixes [#106](https://github.com/blas-lapack-rs/openblas-src/issues/106) and picks up the work abandoned in [#72](https://github.com/blas-lapack-rs/openblas-src/pull/72).
+* Plumb `DYNAMIC_ARCH` through `openblas-build::Configure` (previously dead field) and expose the threading-related build flags `DYNAMIC_ARCH`, `USE_THREAD`, `USE_OPENMP`, `USE_LOCKING`, `NUM_THREADS`, and `NUM_PARALLEL` via the corresponding `OPENBLAS_*` env vars in `openblas-src`. Fixes [#106](https://github.com/blas-lapack-rs/openblas-src/issues/106) and picks up the work abandoned in [#72](https://github.com/blas-lapack-rs/openblas-src/pull/72) by @michael-h-shaham in https://github.com/blas-lapack-rs/openblas-src/pull/152
+* Add rustls/native-tls feature flags for download TLS provider by @pushrax in https://github.com/blas-lapack-rs/openblas-src/pull/154
+* Bump tar from 0.4.38 to 0.4.45 to fix RUSTSEC-2026-0067 and RUSTSEC-2026-0068 by @Dirreke in https://github.com/blas-lapack-rs/openblas-src/pull/157
+* 
+## New Contributors
+* @michael-h-shaham made their first contribution in https://github.com/blas-lapack-rs/openblas-src/pull/152
+* @pushrax made their first contribution in https://github.com/blas-lapack-rs/openblas-src/pull/154
 
 [0.10.15 - 2026-03-24](https://github.com/blas-lapack-rs/openblas-src/compare/openblas-src-v0.10.14...v0.10.15)
 -----------
