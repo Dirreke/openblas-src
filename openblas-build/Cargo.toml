@@ -21,7 +21,7 @@ native-tls = ["ureq/native-tls"]
 anyhow = "1.0.68"
 cc = "1.0"
 flate2 = "1.0.25"
-tar = "0.4.38"
+tar = "0.4.45"
 thiserror = "2.0"
 ureq = { version = "3.0", default-features = false }
 
